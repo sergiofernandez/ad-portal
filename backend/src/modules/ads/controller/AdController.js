@@ -5,8 +5,8 @@ class AdController {
     this.adService = adService;
   }
 
-  getAds = async (req, res) => {
-    const ads = await this.adService.getAds();
+  findAll = async (req, res) => {
+    const ads = await this.adService.findAll();
     return res.status(200).send(ads);
   };
 }

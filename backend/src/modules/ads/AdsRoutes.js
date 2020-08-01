@@ -8,7 +8,7 @@ class AdsRoutes {
 
   configureRoutes(app) {
     app.route(this.ADS_RESOURCE)
-      .get(this.adController.getAds);
+      .get(this.adController.findAll);
   }
 }
 

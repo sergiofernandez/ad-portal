@@ -5,8 +5,8 @@ class AdService {
     this.adRepository = adRepository;
   }
 
-  async getAds() {
-    return this.adRepository.getAds();
+  async findAll() {
+    return this.adRepository.findAll();
   }
 }
 

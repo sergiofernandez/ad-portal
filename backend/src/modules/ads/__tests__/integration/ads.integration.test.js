@@ -4,6 +4,8 @@ const request = supertest(App.app);
 
 describe("Test the ads module", () => {
   test("It should response the GET method", () => {
-    return request.get("/ads").expect(200);
+    return request.get("/ads")
+      .expect("Content-Type", "application/json; charset=utf-8")
+      .expect(200, [{ id: 1 }, { id: 2 }]);
   });
 });
