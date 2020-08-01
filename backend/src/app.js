@@ -1,8 +1,16 @@
 const express = require("express");
-const app = express();
+const AdsModule = require("./modules/ads/AdsModule");
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+class App {
+  app = express();
 
-module.exports = app;
+  constructor() {
+    this.initModules();
+  }
+
+  initModules() {
+    const adsModule = new AdsModule(this.app);
+  }
+}
+
+module.exports = new App();
