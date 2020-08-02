@@ -8,14 +8,11 @@ class AdsRoutes {
 
   configureRoutes(app) {
     app.route(this.ADS_RESOURCE)
-      .get(this.adController.findAll);
-    app.route(`${ this.ADS_RESOURCE }/:id`)
-      .get(this.adController.findById);
-    app.route(this.ADS_RESOURCE)
+      .get(this.adController.findAll)
       .post(this.adController.create);
     app.route(`${ this.ADS_RESOURCE }/:id`)
-      .put(this.adController.update);
-    app.route(`${ this.ADS_RESOURCE }/:id`)
+      .get(this.adController.findById)
+      .put(this.adController.update)
       .delete(this.adController.delete);
   }
 }
