@@ -11,6 +11,10 @@ class AdRepository {
   async findAll() {
     return this.ads;
   }
+
+  async findById(id) {
+    return this.ads.find(ad => ad.id === id);
+  }
 }
 
 module.exports = AdRepository;

@@ -8,6 +8,10 @@ class AdService {
   async findAll() {
     return this.adRepository.findAll();
   }
+
+  async findById(id) {
+    return this.adRepository.findById(id);
+  }
 }
 
 module.exports = AdService;
