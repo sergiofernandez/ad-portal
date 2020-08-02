@@ -18,9 +18,15 @@ class AdController {
   };
 
   create = async (req, res) => {
-    const ad = new Ad();
-    const savedAd = await this.adService.save(ad);
-    return res.status(201).send(savedAd);
+    const ad = new Ad(null, req.body.description);
+    const createdAd = await this.adService.create(ad);
+    return res.status(201).send(createdAd);
+  };
+
+  update = async (req, res) => {
+    const ad = new Ad(req.body.id, req.body.description);
+    const updatedAd = await this.adService.update(ad);
+    return res.status(200).send(updatedAd);
   };
 }
 

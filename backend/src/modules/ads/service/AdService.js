@@ -13,8 +13,12 @@ class AdService {
     return this.adRepository.findById(id);
   }
 
-  async save(ad) {
-    return this.adRepository.save(ad);
+  async create(ad) {
+    return this.adRepository.create(ad);
+  }
+
+  async update(ad) {
+    return this.adRepository.update(ad);
   }
 }
 
