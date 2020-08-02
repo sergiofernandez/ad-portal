@@ -12,6 +12,10 @@ class AdService {
   async findById(id) {
     return this.adRepository.findById(id);
   }
+
+  async save(ad) {
+    return this.adRepository.save(ad);
+  }
 }
 
 module.exports = AdService;

@@ -14,4 +14,10 @@ describe("Test the ads module", () => {
       .expect("Content-Type", "application/json; charset=utf-8")
       .expect(200, { id: 1 });
   });
+
+  test("It should create a new Ad", () => {
+    return request.post("/ads")
+      .expect("Content-Type", "application/json; charset=utf-8")
+      .expect(201, { id: 3 });
+  })
 });

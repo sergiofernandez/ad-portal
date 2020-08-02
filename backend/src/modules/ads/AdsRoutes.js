@@ -11,6 +11,8 @@ class AdsRoutes {
       .get(this.adController.findAll);
     app.route(`${this.ADS_RESOURCE}/:id`)
       .get(this.adController.findById);
+    app.route(this.ADS_RESOURCE)
+      .post(this.adController.create);
   }
 }
 

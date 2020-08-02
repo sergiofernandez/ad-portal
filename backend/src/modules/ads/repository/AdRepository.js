@@ -15,6 +15,13 @@ class AdRepository {
   async findById(id) {
     return this.ads.find(ad => ad.id === id);
   }
+
+  async save(ad) {
+    const nextId = this.ads.length + 1;
+    const newAd = new Ad(nextId);
+    this.ads.push(newAd);
+    return newAd;
+  }
 }
 
 module.exports = AdRepository;
