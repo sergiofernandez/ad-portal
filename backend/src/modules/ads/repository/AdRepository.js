@@ -13,7 +13,7 @@ class AdRepository {
   }
 
   async findById(id) {
-    return this.ads.find(ad => ad.id === id);
+    return this.ads.find(ad => ad.id === Number.parseInt(id));
   }
 
   async create(ad) {
@@ -27,6 +27,12 @@ class AdRepository {
     const index = this.ads.findIndex((_ad) => _ad.id === ad.id);
     this.ads[index] = ad;
     return ad;
+  }
+
+  async delete(id) {
+    const existingAd = this.findById(id);
+    this.ads = this.ads.filter(ad => ad.id !== Number.parseInt(id));
+    return existingAd;
   }
 }
 

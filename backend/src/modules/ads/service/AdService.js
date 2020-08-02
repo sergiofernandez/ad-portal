@@ -20,6 +20,10 @@ class AdService {
   async update(ad) {
     return this.adRepository.update(ad);
   }
+
+  async delete(id) {
+    return this.adRepository.delete(id);
+  }
 }
 
 module.exports = AdService;

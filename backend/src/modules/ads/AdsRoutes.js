@@ -15,6 +15,8 @@ class AdsRoutes {
       .post(this.adController.create);
     app.route(`${ this.ADS_RESOURCE }/:id`)
       .put(this.adController.update);
+    app.route(`${ this.ADS_RESOURCE }/:id`)
+      .delete(this.adController.delete);
   }
 }
 

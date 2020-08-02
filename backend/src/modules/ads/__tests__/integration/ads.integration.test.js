@@ -30,4 +30,10 @@ describe("Test the ads module", () => {
       .expect("Content-Type", "application/json; charset=utf-8")
       .expect(200, { id: 1, description: "A modified description" });
   });
+
+  test("It should delete an existing ad", () => {
+    return request.delete("/ads/2")
+      .expect("Content-Type", "application/json; charset=utf-8")
+      .expect(200, { id: 2, description: "Awesome description 2" });
+  })
 });

@@ -12,8 +12,7 @@ class AdController {
   };
 
   findById = async (req, res) => {
-    const id = Number.parseInt(req.params.id);
-    const ad = await this.adService.findById(id);
+    const ad = await this.adService.findById(req.params.id);
     return res.status(200).send(ad);
   };
 
@@ -27,6 +26,11 @@ class AdController {
     const ad = new Ad(req.body.id, req.body.description);
     const updatedAd = await this.adService.update(ad);
     return res.status(200).send(updatedAd);
+  };
+
+  delete = async (req, res) => {
+    const deletedAd = await this.adService.delete(req.params.id);
+    return res.status(200).send(deletedAd);
   };
 }
 
