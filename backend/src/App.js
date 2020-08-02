@@ -10,6 +10,10 @@ class App {
     this.initModules();
   }
 
+  getApp() {
+    return this.app;
+  }
+
   config() {
     this.app.use(bodyParser.json());
   }
@@ -19,4 +23,4 @@ class App {
   }
 }
 
-module.exports = new App();
+module.exports = App;

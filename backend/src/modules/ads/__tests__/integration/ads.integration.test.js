@@ -1,8 +1,14 @@
 const supertest = require("supertest");
-const App = require("../../../../app");
-const request = supertest(App.app);
+const App = require("../../../../App");
 
 describe("Test the ads module", () => {
+
+  let request;
+
+  beforeEach(() => {
+    request = supertest(new App().getApp());
+  });
+
   test("It should GET a list of Ads", () => {
     return request.get("/ads")
       .expect("Content-Type", "application/json; charset=utf-8")
@@ -32,8 +38,8 @@ describe("Test the ads module", () => {
   });
 
   test("It should delete an existing ad", () => {
-    return request.delete("/ads/2")
+    return request.delete("/ads/1")
       .expect("Content-Type", "application/json; charset=utf-8")
-      .expect(200, { id: 2, description: "Awesome description 2" });
-  })
+      .expect(200, { id: 1, description: "Awesome description 1" });
+  });
 });
