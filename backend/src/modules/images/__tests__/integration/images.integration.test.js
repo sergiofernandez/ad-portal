@@ -1,5 +1,12 @@
 const supertest = require("supertest");
 const App = require("../../../../App");
+const {
+  imageJSON,
+  otherImageJSON,
+  createdImagePayload,
+  createdImageJSON,
+  modifiedImageJSON
+} = require("../helpers/ImageHelper");
 
 describe("Test the images module", () => {
 
@@ -12,34 +19,34 @@ describe("Test the images module", () => {
   test("It should GET a list of Images", () => {
     return request.get("/images")
       .expect("Content-Type", "application/json; charset=utf-8")
-      .expect(200, [{ id: 1, url: "Url 1", quality: "SD" }, { id: 2, url: "Url 2", quality: "HD" }]);
+      .expect(200, [imageJSON, otherImageJSON]);
   });
 
   test("It should GET a Image filtered by id", () => {
     return request.get("/images/1")
       .expect("Content-Type", "application/json; charset=utf-8")
-      .expect(200, { id: 1, url: "Url 1", quality: "SD" });
+      .expect(200, imageJSON);
   });
 
   test("It should create a new Image", () => {
     return request.post("/images")
-      .send({ url: "Url 3", quality: "SD" })
+      .send(createdImagePayload)
       .set("Accept", "application/json")
       .expect("Content-Type", "application/json; charset=utf-8")
-      .expect(201, { id: 3, url: "Url 3", quality: "SD" });
+      .expect(201, createdImageJSON);
   });
 
   test("It should update an existing Image", () => {
     return request.put("/images/1")
-      .send({ id: 1, url: "A modified url", quality: "HD" })
+      .send(modifiedImageJSON)
       .set("Accept", "application/json")
       .expect("Content-Type", "application/json; charset=utf-8")
-      .expect(200, { id: 1, url: "A modified url", quality: "HD" });
+      .expect(200, modifiedImageJSON);
   });
 
   test("It should delete an existing Image", () => {
     return request.delete("/images/1")
       .expect("Content-Type", "application/json; charset=utf-8")
-      .expect(200, { id: 1, url: "Url 1", quality: "SD" });
+      .expect(200, imageJSON);
   });
 });
