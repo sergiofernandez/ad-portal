@@ -19,6 +19,8 @@ const createdImageJSON = createImageJSON(3, "Url 3", ImageQuality.SD);
 const modifiedImage = createImage(1, "A modified url", ImageQuality.HD);
 const modifiedImageJSON = createImageJSON(1, "A modified url", ImageQuality.HD);
 
+const invalidImage = createImage();
+
 module.exports = {
   image,
   imageJSON,
@@ -28,5 +30,6 @@ module.exports = {
   createdImage,
   createdImageJSON,
   modifiedImage,
-  modifiedImageJSON
+  modifiedImageJSON,
+  invalidImage
 };

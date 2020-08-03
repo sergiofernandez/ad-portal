@@ -1,10 +1,12 @@
 const ImageService = require("../../service/ImageService");
+const InvalidImage = require("../../domain/InvalidImage");
 const {
   image,
   otherImage,
   createdImagePayload,
   createdImage,
-  modifiedImage
+  modifiedImage,
+  invalidImage
 } = require("../helpers/ImageHelper");
 
 describe("Test the image service", () => {
@@ -30,10 +32,28 @@ describe("Test the image service", () => {
     expect(await imageService.findById(3)).toMatchObject(createdImage);
   });
 
+  test("Should return InvalidImage exception when create image is not valid", async () => {
+    try {
+      await imageService.create(invalidImage);
+      fail("Should return a InvalidImage exception");
+    } catch (e) {
+      expect(e).toBeInstanceOf(InvalidImage);
+    }
+  });
+
   test("Should update a image", async () => {
     expect(await imageService.update(modifiedImage)).toMatchObject(modifiedImage);
     expect(await imageService.findById(1)).toMatchObject(modifiedImage);
   });
+
+  test("Should return InvalidImage exception when update image is not valid", async() => {
+    try {
+      await imageService.update(invalidImage);
+      fail("Should return a InvalidImage exception");
+    } catch (e) {
+      expect(e).toBeInstanceOf(InvalidImage);
+    }
+  })
 
   test("Should delete a image", async () => {
     await imageService.delete(1);
