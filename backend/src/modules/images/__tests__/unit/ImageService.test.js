@@ -1,5 +1,6 @@
 const ImageService = require("../../service/ImageService");
 const InvalidImage = require("../../domain/InvalidImage");
+const ImageNotFound = require("../../domain/ImageNotFound");
 const {
   image,
   otherImage,
@@ -27,6 +28,15 @@ describe("Test the image service", () => {
     expect(image).toMatchObject(image);
   });
 
+  test("Should return a ImageNotFound exception when image is not found", async () => {
+    try {
+      await imageService.findById(100);
+      fail("Should return a ImageNotFound exception");
+    } catch (e) {
+      expect(e).toBeInstanceOf(ImageNotFound);
+    }
+  });
+
   test("Should create a image", async () => {
     expect(await imageService.create(createdImagePayload)).toMatchObject(createdImage);
     expect(await imageService.findById(3)).toMatchObject(createdImage);
@@ -46,17 +56,22 @@ describe("Test the image service", () => {
     expect(await imageService.findById(1)).toMatchObject(modifiedImage);
   });
 
-  test("Should return InvalidImage exception when update image is not valid", async() => {
+  test("Should return InvalidImage exception when update image is not valid", async () => {
     try {
       await imageService.update(invalidImage);
       fail("Should return a InvalidImage exception");
     } catch (e) {
       expect(e).toBeInstanceOf(InvalidImage);
     }
-  })
+  });
 
   test("Should delete a image", async () => {
-    await imageService.delete(1);
-    expect(await imageService.findById(1)).toBeUndefined();
+    try {
+      await imageService.delete(1);
+      await imageService.findById(1);
+      fail("Should throws a ImageNotFound");
+    } catch (e) {
+      expect(e).toBeInstanceOf(ImageNotFound);
+    }
   });
 });
