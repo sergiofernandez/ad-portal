@@ -85,4 +85,13 @@ describe("Test the image service", () => {
       expect(e).toBeInstanceOf(ImageNotFound);
     }
   });
+
+  test("Should throws ImageNotFound when delete image is not found", async () => {
+    try {
+      await imageService.delete(100);
+      fail("Should throws a ImageNotFound");
+    } catch (e) {
+      expect(e).toBeInstanceOf(ImageNotFound);
+    }
+  });
 });

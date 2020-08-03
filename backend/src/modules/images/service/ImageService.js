@@ -34,6 +34,7 @@ class ImageService {
   }
 
   async delete(id) {
+    await this.findById(id);
     return this.imageRepository.deleteById(id);
   }
 }
