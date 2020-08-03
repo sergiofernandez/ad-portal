@@ -21,6 +21,12 @@ class ImageController {
     const createImage = await this.imageService.create(image);
     return res.status(201).send(createImage);
   };
+
+  update = async (req, res) => {
+    const image = new Image(req.body.id, req.body.url, req.body.quality);
+    const updatedImage = await this.imageService.update(image);
+    return res.status(200).send(updatedImage);
+  };
 }
 
 module.exports = ImageController;

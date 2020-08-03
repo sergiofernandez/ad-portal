@@ -28,4 +28,12 @@ describe("Test the images module", () => {
       .expect("Content-Type", "application/json; charset=utf-8")
       .expect(201, { id: 3, url: "Url 3", quality: "SD" });
   });
+
+  test("It should update an existing Image", () => {
+    return request.put("/images/1")
+      .send({ id: 1, url: "A modified url", quality: "HD" })
+      .set("Accept", "application/json")
+      .expect("Content-Type", "application/json; charset=utf-8")
+      .expect(200, { id: 1, url: "A modified url", quality: "HD" });
+  });
 });

@@ -23,6 +23,12 @@ class ImageRepository {
     this.images.push(newImage);
     return newImage;
   }
+
+  async update(image) {
+    const index = this.images.findIndex((_image) => _image.id === image.id);
+    this.images[index] = image;
+    return image;
+  }
 }
 
 module.exports = ImageRepository;

@@ -16,6 +16,10 @@ class ImageService {
   async create(image) {
     return this.imageRepository.create(image);
   }
+
+  async update(image) {
+    return this.imageRepository.update(image);
+  }
 }
 
 module.exports = ImageService;
