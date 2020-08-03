@@ -22,7 +22,7 @@ class ImageService {
   }
 
   async delete(id) {
-    return this.imageRepository.delete(id);
+    return this.imageRepository.deleteById(id);
   }
 }
 

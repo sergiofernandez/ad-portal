@@ -17,20 +17,19 @@ class ImageController {
   };
 
   create = async (req, res) => {
-    const image = new Image(null, req.body.url, req.body.quality);
-    const createImage = await this.imageService.create(image);
-    return res.status(201).send(createImage);
+    const { id, ...requestBody } = req.body;
+    const createdImage = await this.imageService.create(Image.build(requestBody));
+    return res.status(201).send(createdImage);
   };
 
   update = async (req, res) => {
-    const image = new Image(req.body.id, req.body.url, req.body.quality);
-    const updatedImage = await this.imageService.update(image);
+    const updatedImage = await this.imageService.update(Image.build(req.body));
     return res.status(200).send(updatedImage);
   };
 
   delete = async (req, res) => {
-    const deletedImage = await this.imageService.delete(req.params.id);
-    return res.status(200).send(deletedImage);
+    await this.imageService.delete(req.params.id);
+    return res.status(200).send();
   };
 }
 

@@ -18,10 +18,9 @@ class ImageRepository {
   }
 
   async create(image) {
-    const nextId = this.images.length + 1;
-    const newImage = new Image(nextId, image.url, image.quality);
-    this.images.push(newImage);
-    return newImage;
+    image.id = this.images.length + 1;
+    this.images.push(image);
+    return image;
   }
 
   async update(image) {
@@ -30,10 +29,8 @@ class ImageRepository {
     return image;
   }
 
-  async delete(id) {
-    const existingImage = this.findById(id);
+  async deleteById(id) {
     this.images = this.images.filter(image => image.id !== Number.parseInt(id));
-    return existingImage;
   }
 }
 

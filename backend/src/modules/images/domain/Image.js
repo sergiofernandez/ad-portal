@@ -4,6 +4,10 @@ class Image {
     this.url = url;
     this.quality = quality;
   }
+
+  static build({ id, url, quality }) {
+    return new Image(id, url, quality);
+  }
 }
 
 module.exports = Image;
