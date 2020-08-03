@@ -14,4 +14,18 @@ describe("Test the images module", () => {
       .expect("Content-Type", "application/json; charset=utf-8")
       .expect(200, [{ id: 1, url: "Url 1", quality: "SD" }, { id: 2, url: "Url 2", quality: "HD" }]);
   });
+
+  test("It should GET a Image filtered by id", () => {
+    return request.get("/images/1")
+      .expect("Content-Type", "application/json; charset=utf-8")
+      .expect(200, { id: 1, url: "Url 1", quality: "SD" });
+  });
+
+  test("It should create a new Image", () => {
+    return request.post("/images")
+      .send({ url: "Url 3", quality: "SD" })
+      .set("Accept", "application/json")
+      .expect("Content-Type", "application/json; charset=utf-8")
+      .expect(201, { id: 3, url: "Url 3", quality: "SD" });
+  });
 });

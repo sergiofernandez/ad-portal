@@ -8,7 +8,10 @@ class ImagesRoutes {
 
   configureRoutes(app) {
     app.route(this.IMAGES_RESOURCE)
-      .get(this.imageController.findAll);
+      .get(this.imageController.findAll)
+      .post(this.imageController.create);
+    app.route(`${ this.IMAGES_RESOURCE }/:id`)
+      .get(this.imageController.findById);
   }
 }
 

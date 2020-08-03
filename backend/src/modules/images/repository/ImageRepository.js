@@ -12,6 +12,17 @@ class ImageRepository {
   async findAll() {
     return this.images;
   }
+
+  async findById(id) {
+    return this.images.find(image => image.id === Number.parseInt(id));
+  }
+
+  async create(image) {
+    const nextId = this.images.length + 1;
+    const newImage = new Image(nextId, image.url, image.quality);
+    this.images.push(newImage);
+    return newImage;
+  }
 }
 
 module.exports = ImageRepository;

@@ -8,6 +8,14 @@ class ImageService {
   async findAll() {
     return this.imageRepository.findAll();
   }
+
+  async findById(id) {
+    return this.imageRepository.findById(id);
+  }
+
+  async create(image) {
+    return this.imageRepository.create(image);
+  }
 }
 
 module.exports = ImageService;
