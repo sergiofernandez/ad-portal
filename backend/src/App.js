@@ -1,5 +1,6 @@
 const bodyParser = require("body-parser");
 const express = require("express");
+const appErrorHandler = require("./appErrorHandler");
 const AdsModule = require("./modules/ads/AdsModule");
 const ImagesModule = require("./modules/images/ImagesModule");
 
@@ -22,6 +23,7 @@ class App {
   initModules() {
     const adsModule = new AdsModule(this.app);
     const imagesModule = new ImagesModule(this.app);
+    this.app.use(appErrorHandler);
   }
 }
 
