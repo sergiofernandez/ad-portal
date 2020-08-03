@@ -36,4 +36,10 @@ describe("Test the images module", () => {
       .expect("Content-Type", "application/json; charset=utf-8")
       .expect(200, { id: 1, url: "A modified url", quality: "HD" });
   });
+
+  test("It should delete an existing Image", () => {
+    return request.delete("/images/1")
+      .expect("Content-Type", "application/json; charset=utf-8")
+      .expect(200, { id: 1, url: "Url 1", quality: "SD" });
+  });
 });

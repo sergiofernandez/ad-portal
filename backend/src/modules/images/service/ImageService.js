@@ -20,6 +20,10 @@ class ImageService {
   async update(image) {
     return this.imageRepository.update(image);
   }
+
+  async delete(id) {
+    return this.imageRepository.delete(id);
+  }
 }
 
 module.exports = ImageService;

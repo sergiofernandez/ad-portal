@@ -27,6 +27,11 @@ class ImageController {
     const updatedImage = await this.imageService.update(image);
     return res.status(200).send(updatedImage);
   };
+
+  delete = async (req, res) => {
+    const deletedImage = await this.imageService.delete(req.params.id);
+    return res.status(200).send(deletedImage);
+  };
 }
 
 module.exports = ImageController;

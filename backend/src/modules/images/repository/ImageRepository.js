@@ -29,6 +29,12 @@ class ImageRepository {
     this.images[index] = image;
     return image;
   }
+
+  async delete(id) {
+    const existingImage = this.findById(id);
+    this.images = this.images.filter(image => image.id !== Number.parseInt(id));
+    return existingImage;
+  }
 }
 
 module.exports = ImageRepository;

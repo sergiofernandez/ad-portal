@@ -12,7 +12,8 @@ class ImagesRoutes {
       .post(this.imageController.create);
     app.route(`${ this.IMAGES_RESOURCE }/:id`)
       .get(this.imageController.findById)
-      .put(this.imageController.update);
+      .put(this.imageController.update)
+      .delete(this.imageController.delete);
   }
 }
 
