@@ -1,6 +1,7 @@
 const bodyParser = require("body-parser");
 const express = require("express");
 const AdsModule = require("./modules/ads/AdsModule");
+const ImagesModule = require("./modules/images/ImagesModule");
 
 class App {
   app = express();
@@ -20,6 +21,7 @@ class App {
 
   initModules() {
     const adsModule = new AdsModule(this.app);
+    const imagesModule = new ImagesModule(this.app);
   }
 }
 
