@@ -23,6 +23,7 @@ describe("Test the image validator", () => {
       fail("Should throws InvalidImage");
     } catch (e) {
       const errors = e.errors;
+      expect(errors).toHaveLength(3);
       expect(errors).toContain("Url is required");
       expect(errors).toContain("Quality is required");
       expect(errors).toContain("Quality must be SD,HD");
