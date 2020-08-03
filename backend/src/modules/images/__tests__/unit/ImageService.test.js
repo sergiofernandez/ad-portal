@@ -7,7 +7,9 @@ const {
   createdImagePayload,
   createdImage,
   modifiedImage,
-  invalidImage
+  invalidImage,
+  otherInvalidImage,
+  notFoundImage
 } = require("../helpers/ImageHelper");
 
 describe("Test the image service", () => {
@@ -56,9 +58,18 @@ describe("Test the image service", () => {
     expect(await imageService.findById(1)).toMatchObject(modifiedImage);
   });
 
+  test("Should return ImageNotFound exception when image update image is not found", async () => {
+    try {
+      await imageService.update(notFoundImage);
+      fail("Should return a ImageNotFound exception");
+    } catch (e) {
+      expect(e).toBeInstanceOf(ImageNotFound);
+    }
+  });
+
   test("Should return InvalidImage exception when update image is not valid", async () => {
     try {
-      await imageService.update(invalidImage);
+      await imageService.update(otherInvalidImage);
       fail("Should return a InvalidImage exception");
     } catch (e) {
       expect(e).toBeInstanceOf(InvalidImage);

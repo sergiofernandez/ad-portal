@@ -28,6 +28,7 @@ class ImageService {
   }
 
   async update(image) {
+    await this.findById(image.id);
     this.imageValidator.validate(image);
     return this.imageRepository.update(image);
   }

@@ -21,6 +21,10 @@ const modifiedImageJSON = createImageJSON(1, "A modified url", ImageQuality.HD);
 
 const invalidImage = createImage();
 
+const otherInvalidImage = createImage(1, "Url", "QUALITY");
+
+const notFoundImage = createImage(100, "Url", ImageQuality.SD);
+
 module.exports = {
   image,
   imageJSON,
@@ -31,5 +35,7 @@ module.exports = {
   createdImageJSON,
   modifiedImage,
   modifiedImageJSON,
-  invalidImage
+  invalidImage,
+  otherInvalidImage,
+  notFoundImage
 };
