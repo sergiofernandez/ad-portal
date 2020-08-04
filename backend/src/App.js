@@ -24,7 +24,11 @@ class App {
   }
 
   initDatabase() {
-    mongoose.connect("mongodb://localhost/ad-portal", { useNewUrlParser: true, useUnifiedTopology: true });
+    mongoose.connect("mongodb://localhost/ad-portal", {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true
+    });
     this.dbClient = mongoose.connection;
     this.dbClient.on("error", (error) => console.log("Database connection ERROR", error));
     this.dbClient.once("open", () => console.log("Database connection OK"));
