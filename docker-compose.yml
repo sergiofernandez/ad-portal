@@ -1,0 +1,10 @@
+version: '2.0'
+services:
+  db:
+    image: 'mongo'
+  backend:
+    build: './backend'
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
