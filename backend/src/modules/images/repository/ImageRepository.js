@@ -1,5 +1,6 @@
 const Image = require("../domain/Image");
 const ImageQuality = require("../domain/ImageQuality");
+const ImageModel = require("../persistence/ImageModel");
 
 class ImageRepository {
   images = [];
@@ -10,17 +11,17 @@ class ImageRepository {
   }
 
   async findAll() {
-    return this.images;
+    const images = await ImageModel.find();
+    return images.map(image => Image.build(image));
   }
 
   async findById(id) {
-    return this.images.find(image => image.id === Number.parseInt(id));
+    const image = await ImageModel.findOne({ _id: id });
+    return Image.build(image);
   }
 
   async create(image) {
-    image.id = this.images.length + 1;
-    this.images.push(image);
-    return image;
+    return Image.build(await ImageModel.create({ url: image.url }));
   }
 
   async update(image) {
