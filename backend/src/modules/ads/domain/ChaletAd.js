@@ -7,6 +7,10 @@ class ChaletAd extends Ad {
     this.size = size;
   }
 
+  static build({ id, description, imageIds, size }) {
+    return new ChaletAd(id, description, imageIds, size);
+  }
+
   calculateScoreOfDescriptionSize() {
     if (this.description) {
       if (this.description.length >= 50) {

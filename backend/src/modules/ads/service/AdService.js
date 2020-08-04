@@ -1,4 +1,5 @@
 const AdRepository = require("../repository/AdRepository");
+const AdNotFound = require("../domain/AdNotFound");
 
 class AdService {
   constructor(adRepository = new AdRepository()) {
@@ -10,7 +11,13 @@ class AdService {
   }
 
   async findById(id) {
-    return this.adRepository.findById(id);
+    const ad = await this.adRepository.findById(id);
+
+    if (!ad) {
+      throw new AdNotFound();
+    }
+
+    return ad;
   }
 
   async create(ad) {
@@ -18,11 +25,13 @@ class AdService {
   }
 
   async update(ad) {
+    await this.findById(ad.id);
     return this.adRepository.update(ad);
   }
 
   async delete(id) {
-    return this.adRepository.delete(id);
+    await this.findById(id);
+    return this.adRepository.deleteById(id);
   }
 }
 

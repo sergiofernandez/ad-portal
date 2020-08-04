@@ -14,7 +14,7 @@ describe("Test score calculation of the vehicle ad should", () => {
         });
 
         test("If the ad no have description and photos, should return 0", () => {
-          const vehicle = new VehicleAd(1, "", [], 1000, "mazda", "mazda 3");
+          const vehicle = new VehicleAd(1, "", [], 1000, "rojo", "mazda");
           expect(vehicle.calculateScoreOfCompleteAd()).toBe(0);
         });
 

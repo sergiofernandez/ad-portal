@@ -9,6 +9,10 @@ class VehicleAd extends Ad {
     this.fabricant = fabricant;
   }
 
+  static build({ id, description, imageIds, km, color, fabricant }) {
+    return new VehicleAd(id, description, imageIds, km, color, fabricant);
+  }
+
   calculateScoreOfCompleteAd() {
     if (super.calculateScoreOfCompleteAd() > 0 && this.km && this.km > 0 && this.color && this.color.length > 0
       && this.fabricant && this.fabricant.length > 0) {

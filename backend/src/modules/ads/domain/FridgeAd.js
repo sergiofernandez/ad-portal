@@ -7,6 +7,10 @@ class FridgeAd extends Ad {
     this.height = height;
   }
 
+  static build({ id, description, imageIds, height }) {
+    return new FridgeAd(id, description, imageIds, height);
+  }
+
   calculateScoreOfCompleteAd() {
     if (this.imageIds && this.imageIds.length > 0 && this.height && this.height > 0) {
       return 40;
