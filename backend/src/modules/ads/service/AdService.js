@@ -1,5 +1,6 @@
 const AdRepository = require("../repository/AdRepository");
 const AdNotFound = require("../domain/AdNotFound");
+const { calculateScore } = require("./ScoreCalculator");
 
 class AdService {
   constructor(adRepository = new AdRepository()) {
@@ -21,11 +22,13 @@ class AdService {
   }
 
   async create(ad) {
+    ad.score = calculateScore(ad);
     return this.adRepository.create(ad);
   }
 
   async update(ad) {
     await this.findById(ad.id);
+    ad.score = calculateScore(ad);
     return this.adRepository.update(ad);
   }
 

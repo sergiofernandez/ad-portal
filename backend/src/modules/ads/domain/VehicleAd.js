@@ -2,15 +2,15 @@ const Ad = require("./Ad");
 const AdType = require("./AdType");
 
 class VehicleAd extends Ad {
-  constructor(id, description, imageIds, km, color, fabricant) {
-    super(id, description, AdType.VEHICLE, imageIds);
+  constructor(id, description, imageIds, score, km, color, fabricant) {
+    super(id, description, AdType.VEHICLE, imageIds, score);
     this.km = km;
     this.color = color;
     this.fabricant = fabricant;
   }
 
-  static build({ id, description, imageIds, km, color, fabricant }) {
-    return new VehicleAd(id, description, imageIds, km, color, fabricant);
+  static build({ id, description, imageIds, score, km, color, fabricant }) {
+    return new VehicleAd(id, description, imageIds, score, km, color, fabricant);
   }
 
   calculateScoreOfCompleteAd() {

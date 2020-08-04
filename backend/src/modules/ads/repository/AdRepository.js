@@ -7,10 +7,10 @@ class AdRepository {
   ads = [];
 
   constructor() {
-    this.ads.push(new ChaletAd(1, "Chalet description", [], 100));
-    this.ads.push(new FlatAd(2, "Flat description", [1], 85));
-    this.ads.push(new FridgeAd(3, "Fridge description", [2, 4], 5));
-    this.ads.push(new VehicleAd(4, "Vehicle description", [3], 1000, "rojo", "mazda"));
+    this.ads.push(new ChaletAd(1, "Chalet description", [], 20, 100));
+    this.ads.push(new FlatAd(2, "Flat description", [1], 80, 85));
+    this.ads.push(new FridgeAd(3, "Fridge description", [2, 4], 5, 5));
+    this.ads.push(new VehicleAd(4, "Vehicle description", [3], 70, 1000, "rojo", "mazda"));
   }
 
   async findAll() {

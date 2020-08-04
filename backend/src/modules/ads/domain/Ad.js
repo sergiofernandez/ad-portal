@@ -1,9 +1,10 @@
 class Ad {
-  constructor(id, description, type, imageIds) {
+  constructor(id, description, type, imageIds, score) {
     this.id = id;
     this.description = description;
     this.type = type;
     this.imageIds = imageIds;
+    this.score = score;
   }
 
   calculateScoreOfEmptyImageIds() {

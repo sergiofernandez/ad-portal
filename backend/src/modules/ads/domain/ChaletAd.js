@@ -2,13 +2,13 @@ const Ad = require("./Ad");
 const AdType = require("./AdType");
 
 class ChaletAd extends Ad {
-  constructor(id, description, imageIds, size) {
-    super(id, description, AdType.CHALET, imageIds);
+  constructor(id, description, imageIds, score, size) {
+    super(id, description, AdType.CHALET, imageIds, score);
     this.size = size;
   }
 
-  static build({ id, description, imageIds, size }) {
-    return new ChaletAd(id, description, imageIds, size);
+  static build({ id, description, imageIds, score, size }) {
+    return new ChaletAd(id, description, imageIds, score, size);
   }
 
   calculateScoreOfDescriptionSize() {

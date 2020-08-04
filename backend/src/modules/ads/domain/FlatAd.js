@@ -2,13 +2,13 @@ const Ad = require("./Ad");
 const AdType = require("./AdType");
 
 class FlatAd extends Ad {
-  constructor(id, description, imageIds, size) {
-    super(id, description, AdType.FLAT, imageIds);
+  constructor(id, description, imageIds, score, size) {
+    super(id, description, AdType.FLAT, imageIds, score);
     this.size = size;
   }
 
-  static build({ id, description, imageIds, size }) {
-    return new FlatAd(id, description, imageIds, size);
+  static build({ id, description, imageIds, score, size }) {
+    return new FlatAd(id, description, imageIds, score, size);
   }
 
   calculateScoreOfDescriptionSize() {
