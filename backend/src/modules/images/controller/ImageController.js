@@ -36,7 +36,8 @@ class ImageController {
 
   update = async (req, res, next) => {
     try {
-      const updatedImage = await this.imageService.update(Image.build(req.body));
+      const requestBody = { ...req.body, id: req.params.id };
+      const updatedImage = await this.imageService.update(Image.build(requestBody));
       return res.status(200).send(updatedImage);
     } catch (e) {
       next(e);

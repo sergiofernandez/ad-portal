@@ -24,6 +24,7 @@ class ImageRepository {
   }
 
   async update(image) {
+    image.id = Number.parseInt(image.id);
     const index = this.images.findIndex((_image) => _image.id === image.id);
     this.images[index] = image;
     return image;
