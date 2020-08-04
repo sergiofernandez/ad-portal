@@ -1,41 +1,37 @@
-const ChaletAd = require("../domain/ChaletAd");
-const FlatAd = require("../domain/FlatAd");
-const FridgeAd = require("../domain/FridgeAd");
-const VehicleAd = require("../domain/VehicleAd");
+const { fromPayloadToAd } = require("../mapper/AdMapper");
+const AdModel = require("../persistence/AdModel");
+const AdSequenceModel = require("../persistence/AdSequenceModel");
 
 class AdRepository {
-  ads = [];
-
-  constructor() {
-    this.ads.push(new ChaletAd(1, "Chalet description", [], 20, 100));
-    this.ads.push(new FlatAd(2, "Flat description", [1], 80, 85));
-    this.ads.push(new FridgeAd(3, "Fridge description", [2, 4], 5, 5));
-    this.ads.push(new VehicleAd(4, "Vehicle description", [3], 70, 1000, "rojo", "mazda"));
-  }
 
   async findAll() {
-    return this.ads;
+    const ads = await AdModel.find();
+    return ads.map(ad => fromPayloadToAd(ad));
   }
 
   async findById(id) {
-    return this.ads.find(ad => ad.id === Number.parseInt(id));
+    const ad = await AdModel.findOne({ id });
+
+    if (!ad) {
+      return undefined;
+    }
+
+    return fromPayloadToAd(ad);
   }
 
   async create(ad) {
-    ad.id = this.ads.length + 1;
-    this.ads.push(ad);
-    return ad;
+    const nextId = await AdSequenceModel.getNextId();
+    const createdAdModel = await AdModel.create({ ...ad, id: nextId });
+    return fromPayloadToAd(createdAdModel);
   }
 
   async update(ad) {
-    ad.id = Number.parseInt(ad.id);
-    const index = this.ads.findIndex((_ad) => _ad.id === ad.id);
-    this.ads[index] = ad;
+    await AdModel.updateOne({ id: ad.id }, { ...ad });
     return ad;
   }
 
   async deleteById(id) {
-    this.ads = this.ads.filter(ad => ad.id !== Number.parseInt(id));
+    await AdModel.deleteOne({ id });
   }
 }
 
