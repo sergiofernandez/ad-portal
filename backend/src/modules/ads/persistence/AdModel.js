@@ -12,7 +12,7 @@ const ad = new Schema({
     required: true,
     enum: ["CHALET", "PISO", "FRIGORIFICO", "VEHICULO"]
   },
-  imageIds: [[Number]],
+  imageIds: [Number],
   description: String,
   score: Number,
   size: Number,
