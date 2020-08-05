@@ -24,7 +24,8 @@ class App {
   }
 
   initDatabase() {
-    mongoose.connect("mongodb://localhost/ad-portal", {
+    const dbUrl = process.env.DB_URL || "localhost";
+    mongoose.connect(`mongodb://${ dbUrl }/ad-portal`, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true
