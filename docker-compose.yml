@@ -1,7 +1,7 @@
 version: '2.0'
 services:
   db:
-    image: 'mongo'
+    build: './db'
   backend:
     build: './backend'
     ports:
@@ -10,3 +10,11 @@ services:
       - DB_URL=db
     depends_on:
       - db
+  graphql:
+    build: './graphql'
+    ports:
+      - '4000:4000'
+    environment:
+      - BACKEND_URL=backend
+    depends_on:
+      - backend
