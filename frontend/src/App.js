@@ -1,7 +1,8 @@
 import React from "react";
+import ProductList from "./components/ProductList";
 
 function App() {
-  return (<p>React RMWC app</p>);
+  return (<ProductList/>);
 }
 
 export default App;
