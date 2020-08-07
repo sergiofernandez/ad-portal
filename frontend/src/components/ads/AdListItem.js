@@ -1,15 +1,22 @@
 import React from "react";
+
 import { Card, CardMedia, CardPrimaryAction } from "@rmwc/card";
 import { Typography } from "@rmwc/typography";
 
-function ProductListItem(props) {
+function AdListItem(props) {
   return (
     <Card>
       <CardPrimaryAction>
-        <CardMedia
-          sixteenByNine
-          style={ { backgroundImage: `url(${ props.images[0].url })` } }
-        />
+        { props.images[0] ?
+          <CardMedia
+            sixteenByNine
+            style={ { backgroundImage: `url(${ props.images[0].url })` } }
+          />
+          :
+          <Typography use="headline4" style={ { textAlign: "center", padding: "1rem" } }>
+            Sin imagen
+          </Typography>
+        }
         <div style={ { padding: "0 1rem 1rem 1rem" } }>
           <Typography use="headline6" tag="h2">
             { props.type }
@@ -17,10 +24,13 @@ function ProductListItem(props) {
           <Typography use="subtitle2" tag="h3" theme="textSecondaryOnBackground" style={ { marginTop: "-1rem" } }>
             Puntuación: { props.score }
           </Typography>
+          <Typography use="body1" tag="div" theme="textSecondaryOnBackground">
+            { props.description }
+          </Typography>
         </div>
       </CardPrimaryAction>
     </Card>
   );
 }
 
-export default ProductListItem;
+export default AdListItem;

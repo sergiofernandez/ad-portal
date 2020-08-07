@@ -1,8 +1,18 @@
 import React from "react";
-import ProductList from "./components/ProductList";
+
+import { RMWCProvider } from "@rmwc/provider";
+import { SimpleTopAppBar, TopAppBarFixedAdjust } from "@rmwc/top-app-bar";
+
+import AdList from "./pages/AdList";
 
 function App() {
-  return (<ProductList/>);
+  return (
+    <RMWCProvider>
+      <SimpleTopAppBar title="Portal de anuncios"/>
+      <TopAppBarFixedAdjust/>
+      <AdList/>
+    </RMWCProvider>
+  );
 }
 
 export default App;

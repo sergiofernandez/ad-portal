@@ -1,11 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { ApolloProvider } from "@apollo/client";
+
 import App from "./App";
-import 'rmwc/dist/styles'
+import { client } from "./apollo/client";
+
+import "rmwc/dist/styles";
+import "./index.css";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <ApolloProvider client={ client }>
     <App/>
-  </React.StrictMode>,
+  </ApolloProvider>,
   document.getElementById("root")
 );
