@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-import { Card, CardMedia, CardPrimaryAction } from "@rmwc/card";
+import { Card, CardActionButton, CardActions, CardMedia, CardPrimaryAction } from "@rmwc/card";
 import { Typography } from "@rmwc/typography";
 
 function AdListItem(props) {
@@ -22,13 +23,16 @@ function AdListItem(props) {
             { props.type }
           </Typography>
           <Typography use="subtitle2" tag="h3" theme="textSecondaryOnBackground" style={ { marginTop: "-1rem" } }>
-            Puntuación: { props.score }
+            Puntuación: { props.score }/100
           </Typography>
           <Typography use="body1" tag="div" theme="textSecondaryOnBackground">
             { props.description }
           </Typography>
         </div>
       </CardPrimaryAction>
+      <CardActions fullBleed>
+        <CardActionButton label="Ver anuncio" trailingIcon="arrow_forward" tag={ Link } to={ `/ads/${ props.id }` }/>
+      </CardActions>
     </Card>
   );
 }

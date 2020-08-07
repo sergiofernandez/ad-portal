@@ -28,6 +28,7 @@ function AdList() {
         { data.ads.map(ad =>
           <GridCell span={ 2 } key={ ad.id }>
             <AdListItem
+              id={ ad.id }
               type={ ad.type }
               score={ ad.score }
               images={ ad.images }
