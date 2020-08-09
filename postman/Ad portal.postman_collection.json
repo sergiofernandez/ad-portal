@@ -1,0 +1,272 @@
+{
+	"info": {
+		"_postman_id": "03b99e66-5643-4232-a0df-38e06f6e1f93",
+		"name": "Ad portal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "images",
+			"item": [
+				{
+					"name": "Find all images",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/images",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"images"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find image by image id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/images/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"images",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create image",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"url\": \"Image URL\",\n\t\"quality\": \"SD|HD\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/images",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"images"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Replace image by image id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"url\": \"Image URL\",\n\t\"quality\": \"SD|HD\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/images/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"images",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete image by image id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/images/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"images",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ads",
+			"item": [
+				{
+					"name": "Find all ads",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/ads",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ads"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find ad by ad id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/ads/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ads",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create ad",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"type\": \"CHALET|PISO|FRIGORIFICO|VEHICULO\",\n\t\"description\": \"\",\n\t\"imageIds\": [],\n\t\"size\": 0,\n\t\"height\": 0,\n\t\"km\": 0,\n\t\"color\": \"\",\n\t\"fabricant\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/ads",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ads"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Replace ad by ad id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"type\": \"CHALET|PISO|FRIGORIFICO|VEHICULO\",\n\t\"description\": \"\",\n\t\"imageIds\": [],\n\t\"size\": 0,\n\t\"height\": 0,\n\t\"km\": 0,\n\t\"color\": \"\",\n\t\"fabricant\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/ads/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ads",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete ad by ad id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/ads/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ads",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
